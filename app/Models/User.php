@@ -15,8 +15,8 @@ class User extends Authenticatable
     use SoftDeletes;
     use HasRoles;
     use HasFactory;
-    
-    protected $table = 'users';
+
+    protected $table = 'user_stockist';
 
     /**
      * The attributes that are mass assignable.
@@ -49,7 +49,7 @@ class User extends Authenticatable
         'deleted_at'
     ];
 
-    protected $attributes = [ 
+    protected $attributes = [
         'menuroles' => 'user',
     ];
 }

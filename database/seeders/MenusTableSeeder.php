@@ -125,7 +125,7 @@ class MenusTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    { 
+    {
         /* Get roles */
         $this->adminRole = Role::where('name' , '=' , 'admin' )->first();
         $this->userRole = Role::where('name', '=', 'user' )->first();
@@ -134,7 +134,7 @@ class MenusTableSeeder extends Seeder
             'name' => 'sidebar menu'
         ]);
         $this->menuId = DB::getPdo()->lastInsertId();  //set menuId
-        $this->insertLink('guest,user,admin', 'Dashboard', '/', 'cil-speedometer');
+        $this->insertLink('guest,user,admin', 'Dashboard', '/dashboard', 'cil-speedometer');
         $this->beginDropdown('admin', 'Settings', 'cil-calculator');
             $this->insertLink('admin', 'Notes',                   '/notes');
             $this->insertLink('admin', 'Users',                   '/users');
