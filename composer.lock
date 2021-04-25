@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4b18383169fb02b220a9052e334bfbe",
+    "content-hash": "88fef3c6a977df286b1b65d04e19ce10",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -57,6 +57,78 @@
                 "stack"
             ],
             "time": "2019-12-24T22:41:47+00:00"
+        },
+        {
+            "name": "box/spout",
+            "version": "v2.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/box/spout.git",
+                "reference": "3681a3421a868ab9a65da156c554f756541f452b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/box/spout/zipball/3681a3421a868ab9a65da156c554f756541f452b",
+                "reference": "3681a3421a868ab9a65da156c554f756541f452b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xmlreader": "*",
+                "ext-zip": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.0"
+            },
+            "suggest": {
+                "ext-iconv": "To handle non UTF-8 CSV files (if \"php-intl\" is not already installed or is too limited)",
+                "ext-intl": "To handle non UTF-8 CSV files (if \"iconv\" is not already installed)"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Box\\Spout\\": "src/Spout"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Adrien Loison",
+                    "email": "adrien@box.com"
+                }
+            ],
+            "description": "PHP Library to read and write spreadsheet files (CSV, XLSX and ODS), in a fast and scalable way",
+            "homepage": "https://www.github.com/box/spout",
+            "keywords": [
+                "OOXML",
+                "csv",
+                "excel",
+                "memory",
+                "odf",
+                "ods",
+                "office",
+                "open",
+                "php",
+                "read",
+                "scale",
+                "spreadsheet",
+                "stream",
+                "write",
+                "xlsx"
+            ],
+            "support": {
+                "issues": "https://github.com/box/spout/issues",
+                "source": "https://github.com/box/spout/tree/v2.7.3"
+            },
+            "time": "2017-09-25T19:44:35+00:00"
         },
         {
             "name": "brick/math",
@@ -903,6 +975,43 @@
             "time": "2019-11-02T09:15:47+00:00"
         },
         {
+            "name": "jsdecena/mcpro",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jsdecena/mcpro.git",
+                "reference": "5bb2c2fd01b1a9d4951f76cf2ac51b93e461f3fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jsdecena/mcpro/zipball/5bb2c2fd01b1a9d4951f76cf2ac51b93e461f3fc",
+                "reference": "5bb2c2fd01b1a9d4951f76cf2ac51b93e461f3fc",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jsdecena\\MCPro\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeff Simons Decena",
+                    "email": "jeff.decena@yahoo.com"
+                }
+            ],
+            "description": "Municipalities, Cities and Provinces package for the Philippines.",
+            "support": {
+                "issues": "https://github.com/jsdecena/mcpro/issues",
+                "source": "https://github.com/jsdecena/mcpro/tree/1.1.0"
+            },
+            "time": "2017-06-11T14:30:37+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v8.6.0",
             "source": {
@@ -1066,58 +1175,6 @@
             "time": "2020-09-22T13:42:02+00:00"
         },
         {
-            "name": "laravel/legacy-factories",
-            "version": "v1.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/legacy-factories.git",
-                "reference": "8bedd3d537c7e648085cc8532701df1fa81ae012"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/legacy-factories/zipball/8bedd3d537c7e648085cc8532701df1fa81ae012",
-                "reference": "8bedd3d537c7e648085cc8532701df1fa81ae012",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/macroable": "^8.0",
-                "php": "^7.3",
-                "symfony/finder": "^3.4|^4.0|^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Illuminate\\Database\\Eloquent\\LegacyFactoryServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "files": [
-                    "helpers.php"
-                ],
-                "psr-4": {
-                    "Illuminate\\Database\\Eloquent\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "The legacy version of the Laravel Eloquent factories.",
-            "homepage": "http://laravel.com",
-            "time": "2020-09-21T13:31:44+00:00"
-        },
-        {
             "name": "laravel/tinker",
             "version": "v2.4.2",
             "source": {
@@ -1234,6 +1291,78 @@
                 "ui"
             ],
             "time": "2020-09-11T15:34:08+00:00"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v6.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "ae15b9c4bf918ec3a78f092b8555551dd693fde3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/ae15b9c4bf918ec3a78f092b8555551dd693fde3",
+                "reference": "ae15b9c4bf918ec3a78f092b8555551dd693fde3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "^6.0|^7.0|^8.0",
+                "illuminate/routing": "^6.0|^7.0|^8.0",
+                "illuminate/session": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "illuminate/view": "^6.0|^7.0|^8.0",
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~8.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Collective\\Html\\HtmlServiceProvider"
+                    ],
+                    "aliases": {
+                        "Form": "Collective\\Html\\FormFacade",
+                        "Html": "Collective\\Html\\HtmlFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                },
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "https://laravelcollective.com",
+            "support": {
+                "issues": "https://github.com/LaravelCollective/html/issues",
+                "source": "https://github.com/LaravelCollective/html"
+            },
+            "time": "2020-12-15T20:20:05+00:00"
         },
         {
             "name": "league/commonmark",
@@ -2605,6 +2734,69 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "rap2hpoutre/fast-excel",
+            "version": "v2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rap2hpoutre/fast-excel.git",
+                "reference": "c8032e9146765e01a025f7f98d38b13f32f63e32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rap2hpoutre/fast-excel/zipball/c8032e9146765e01a025f7f98d38b13f32f63e32",
+                "reference": "c8032e9146765e01a025f7f98d38b13f32f63e32",
+                "shasum": ""
+            },
+            "require": {
+                "box/spout": "^2.7",
+                "illuminate/support": "5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.* || 5.8.* || ^6.0 || ^7.0 || ^8.0",
+                "php": "^7.1|^8.0"
+            },
+            "require-dev": {
+                "illuminate/database": "^6.20.12 || ^7.30.4 || ^8.24.0",
+                "phpunit/phpunit": "^6.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rap2hpoutre\\FastExcel\\Providers\\FastExcelServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rap2hpoutre\\FastExcel\\": "src/"
+                },
+                "files": [
+                    "src/functions/fastexcel.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "rap2h",
+                    "email": "raphaelht@gmail.com"
+                }
+            ],
+            "description": "Fast Excel import/export for Laravel",
+            "keywords": [
+                "csv",
+                "excel",
+                "laravel",
+                "xls",
+                "xlsx"
+            ],
+            "support": {
+                "issues": "https://github.com/rap2hpoutre/fast-excel/issues",
+                "source": "https://github.com/rap2hpoutre/fast-excel/tree/v2.5.0"
+            },
+            "time": "2021-02-22T07:16:09+00:00"
         },
         {
             "name": "spatie/image",
@@ -5325,6 +5517,129 @@
                 }
             ],
             "time": "2020-07-22T23:32:04+00:00"
+        },
+        {
+            "name": "woenel/prpcmblmts",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/woenel/prpcmblmts.git",
+                "reference": "4c679b71fa2c06718ffe54928d8e63e007dab86e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/woenel/prpcmblmts/zipball/4c679b71fa2c06718ffe54928d8e63e007dab86e",
+                "reference": "4c679b71fa2c06718ffe54928d8e63e007dab86e",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Woenel\\Prpcmblmts\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Woenel\\Prpcmblmts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ronnel Martinez",
+                    "email": "misc.woe@outlook.ph"
+                }
+            ],
+            "description": "Philippines region, province, cities/municipalities and barangays Laravel migration and table seeder.",
+            "keywords": [
+                "barangay",
+                "city",
+                "laravel",
+                "migration",
+                "municipality",
+                "philippines",
+                "province",
+                "region",
+                "seeder"
+            ],
+            "support": {
+                "issues": "https://github.com/woenel/prpcmblmts/issues",
+                "source": "https://github.com/woenel/prpcmblmts/tree/v1.0.2"
+            },
+            "time": "2021-04-11T01:49:26+00:00"
+        },
+        {
+            "name": "yajra/laravel-address",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-address.git",
+                "reference": "f0a90b08fcf65c9a9e1b87ada90a298e28c25295"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-address/zipball/f0a90b08fcf65c9a9e1b87ada90a298e28c25295",
+                "reference": "f0a90b08fcf65c9a9e1b87ada90a298e28c25295",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^5.5|^6|^7|^8",
+                "illuminate/routing": "^5.5|^6|^7|^8",
+                "illuminate/support": "^5.5|^6|^7|^8",
+                "laravelcollective/html": "^5.5|^6|^7|^8",
+                "rap2hpoutre/fast-excel": "^1.6|^2.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Yajra\\Address\\AddressServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "database"
+                ],
+                "psr-4": {
+                    "Yajra\\Address\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com",
+                    "homepage": "http://yajrabox.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Philippines Address Lookup API for Laravel.",
+            "homepage": "https://github.com/yajra/laravel-address",
+            "keywords": [
+                "address",
+                "laravel",
+                "yajra"
+            ],
+            "support": {
+                "issues": "https://github.com/yajra/laravel-address/issues",
+                "source": "https://github.com/yajra/laravel-address/tree/v0.5.0"
+            },
+            "time": "2021-03-30T03:01:13+00:00"
         }
     ],
     "packages-dev": [
@@ -7733,5 +8048,5 @@
         "php": "^7.2.5"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
