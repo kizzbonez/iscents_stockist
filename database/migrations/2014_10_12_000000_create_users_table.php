@@ -20,7 +20,8 @@ class CreateUsersTable extends Migration
             $table->integer('city')->nullable();
             $table->integer('province')->nullable();
             $table->string('contact_number')->nullable();
-            $table->string('email')->unique();
+            $table->string('username')->unique();
+            $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('menuroles');
@@ -38,6 +39,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('users_stockist');
     }
 }

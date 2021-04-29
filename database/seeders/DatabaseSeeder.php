@@ -32,6 +32,8 @@ class DatabaseSeeder extends Seeder
             ExampleSeeder::class,
             BREADSeeder::class,
             EmailSeeder::class,
+            PhilippineProvincesTableSeeder::class,
+            PhilippineCitiesTableSeeder::class,
         ]);
     }
 }

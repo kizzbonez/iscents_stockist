@@ -90,4 +90,16 @@ class UsersController extends Controller
         }
         return redirect()->route('users.index');
     }
+    /**
+     * User Info  View/Edit
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function userInfoAction()
+    {
+        $pageData = array();
+        $pageData['title'] = 'New User';
+        return view('admin.userinfo',['pageData'=>$pageData]);
+    }
 }
