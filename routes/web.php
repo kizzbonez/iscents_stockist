@@ -119,6 +119,6 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::post('/file/cropp',      'MediaController@cropp');
             Route::get('/file/copy',        'MediaController@fileCopy')->name('media.file.copy');
         });
-        Route::match(array('GET','POST'),'/admin/new-user', 'UsersController@userInfoAction')->name('admin.user.add');
+        Route::match(array('GET','POST'),'/user-management/add-user', 'UsersController@userInfoAction')->name('admin.user.add');
     });
 });

@@ -25,6 +25,16 @@
                             @endif
                                 <form method="POST" action="{{ route('admin.user.add') }}">
                                     <div class="form-group">
+                                        <label>Username</label>
+                                        <input
+                                            type="text"
+                                            placeholder="Username"
+                                            name="username"
+                                            id="username"
+                                            class="form-control"
+                                        />
+                                    </div>
+                                    <div class="form-group">
                                         <label>Name</label>
                                         <input
                                             type="text"
@@ -67,27 +77,34 @@
                                     <div class="form-group">
                                         <label>Province</label>
                                         <select name="province" id="province" class="form-control">
-                                            {{$provinces = \App\Helpers\CommonHelper::getProvinces()}}
+                                            @php
+                                                $provinces = \App\Helpers\CommonHelper::getProvinces()
+                                            @endphp
+
                                             @foreach($provinces as $province)
-                                                <option id="{{$province->id}}">{{$province->name}}</option>
+                                                <option id="{{$province->id}}">{{$province->province_description}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>City</label>
                                         <select name="city" id="city" class="form-control">
-                                            {{$cities = \App\Helpers\CommonHelper::getCities()}}
-                                            @foreach($cities as $city)
-                                                <option id="{{$city->id}}">{{$city->name}}</option>
-                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Type</label>
                                         <select name="stockist_type" id="stockist_type" class="form-control">
+                                            @php
+                                                $userTypes = \App\Constants\StockistContants::USER_TYPES;
+                                            @endphp
+                                            @foreach($userTypes as $index => $userType)
+                                                @if($index !== \App\Constants\StockistContants::USER_TYPE_ADMIN_STOCKIST)
+                                                <option id="{{$index}}">{{$userType}}</option>
+                                                @endif
+                                            @endforeach
                                         </select>
                                     </div>
-
+                                    <button class="btn btn-primary">Submit</button>
                                 </form>
                         </div>
                     </div>

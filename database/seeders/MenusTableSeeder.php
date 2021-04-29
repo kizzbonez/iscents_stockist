@@ -144,18 +144,19 @@ class MenusTableSeeder extends Seeder
         $this->insertLink('admin', 'Orders',                   '/orders');
         $this->endDropdown();
         $this->beginDropdown('admin', 'User Management', 'cil-user');
-        $this->insertLink('admin', 'Add User',                   '/new-user');
+        $this->insertLink('admin', 'Add User',                   '/user-management/add-user');
         $this->insertLink('admin', 'User List',                   '/user-list');
         $this->endDropdown();
         $this->beginDropdown('admin', 'Settings', 'cil-calculator');
-        $this->insertLink('admin', 'Notes',                   '/notes');
-        $this->insertLink('admin', 'Users',                   '/users');
         $this->insertLink('admin', 'Edit menu',               '/menu/menu');
         $this->insertLink('admin', 'Edit menu elements',      '/menu/element');
-        $this->insertLink('admin', 'Edit roles',              '/roles');
-        $this->insertLink('admin', 'Media',                   '/media');
-        $this->insertLink('admin', 'BREAD',                   '/bread');
-        $this->insertLink('admin', 'Email',                   '/mail');
+
+//        $this->insertLink('admin', 'Edit roles',              '/roles');
+//        $this->insertLink('admin', 'Notes',                   '/notes');
+//        $this->insertLink('admin', 'Media',                   '/media');
+//        $this->insertLink('admin', 'BREAD',                   '/bread');
+//        $this->insertLink('admin', 'Email',                   '/mail');
+//        $this->insertLink('admin', 'Users',                   '/users');
         $this->endDropdown();
 //        $this->insertLink('guest', 'Login', '/login', 'cil-account-logout');
 //        $this->insertLink('guest', 'Register', '/register', 'cil-account-logout');
