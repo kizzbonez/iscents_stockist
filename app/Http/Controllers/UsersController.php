@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Validator;
+use Session;
+use Illuminate\Validation\Rule;
 class UsersController extends Controller
 {
 
+    protected  $userService;
     /**
      * Create a new controller instance.
      *
@@ -17,6 +21,7 @@ class UsersController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('admin');
+        $this->userService = New UserService();
     }
 
     /**
@@ -90,16 +95,6 @@ class UsersController extends Controller
         }
         return redirect()->route('users.index');
     }
-    /**
-     * User Info  View/Edit
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function userInfoAction()
-    {
-        $pageData = array();
-        $pageData['title'] = 'New User';
-        return view('admin.userinfo',['pageData'=>$pageData]);
-    }
+
+
 }

@@ -73,7 +73,7 @@ Route::group(['middleware' => ['get.menu']], function () {
         'destroy'   => 'resource.destroy'
     ]);
 
-    Route::group(['middleware' => ['role:admin']], function () {
+    Route::group(['middleware' => ['role:admin|user']], function () {
         Route::get('/dashboard', function () {     return view('dashboard.homepage'); });
         Route::resource('bread',  'BreadController');   //create BREAD (resource)
         Route::resource('users',        'UsersController')->except( ['create', 'store'] );
@@ -119,6 +119,10 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::post('/file/cropp',      'MediaController@cropp');
             Route::get('/file/copy',        'MediaController@fileCopy')->name('media.file.copy');
         });
-        Route::match(array('GET','POST'),'/user-management/add-user', 'UsersController@userInfoAction')->name('admin.user.add');
+        Route::match(array('GET','POST'),'/user-management/add-user', 'admin\UsersController@userInfoAction')->name('admin.user.add');
+        Route::match(array('GET','POST'),'/user-management/edit-user/{id}', 'admin\UsersController@updateUserInfoAction')->name('admin.user.update');
+        Route::match(array('GET','POST'),'/user-management/edit-user-password/{id}', 'admin\UsersController@updateUserPasswordAction')->name('admin.user.update.password');
+        Route::match(array('GET'),'/user-management', 'admin\UsersController@index')->name('admin.user.list');
+        Route::match(array('GET'),'/user-list', 'admin\UsersController@getusersAction')->name('admin.api.users');
     });
 });

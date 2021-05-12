@@ -1,6 +1,8 @@
 <?php
 namespace App\Helpers;
 
+use App\Models\User;
+
 class CommonHelper
 {
 
@@ -14,5 +16,49 @@ class CommonHelper
         $provinces = \App\Models\Province::all();
         return $provinces;
     }
+
+    public static function getInfoFromArray($array,$key){
+
+        if(array_key_exists($key,$array)){
+            return $array[$key];
+        }
+        return null;
+    }
+    /**
+     * Check if variable is empty or null
+     * @param null $field
+     * @return bool
+     */
+    public static function isNullOrEmpty($field)
+    {
+        return (!isset($field) || is_null($field) || empty($field) || $field == '');
+    }
+    /**
+     * Check if variable is not empty or null
+     * @param null $field
+     * @return bool
+     */
+    public static function isNotNullOrEmpty($field)
+    {
+        return !self::isNullOrEmpty($field);
+    }
+
+    public static function userInfoToFormData(User $userInfo){
+        $userInfoArr = array();
+        $userInfoArr['username'] = $userInfo['username'];
+        $userInfoArr['name'] = $userInfo['name'];
+        $userInfoArr['id'] = $userInfo['id'];
+        $userInfoArr['email'] = $userInfo['email'];
+        $userInfoArr['address'] = $userInfo['address'];
+        $userInfoArr['province'] = $userInfo['province'];
+        $userInfoArr['contact_number'] = $userInfo['contact_number'];
+        $userInfoArr['stockist_type'] = $userInfo['stockist_type_id'];
+        $userInfoArr['city'] = $userInfo['city'];
+
+        return $userInfoArr;
+
+
+    }
+
 
 }

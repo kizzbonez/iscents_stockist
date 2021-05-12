@@ -226,8 +226,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'CommonHelper' => \App\Helpers\CommonHelper::class,
-        'ErrorConstants' => \App\Constants\StockistErrorConstants::class,
-        'AppConstants' => \App\Constants\StockistContants::class,
+        'StockistErrorConstants' => \App\Constants\StockistErrorConstants::class,
+        'StockistConstants' => \App\Constants\StockistConstants::class,
 
 
     ],
