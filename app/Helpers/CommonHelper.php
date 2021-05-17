@@ -12,9 +12,27 @@ class CommonHelper
         return $cities;
     }
 
+    public  static function getCitiesById($id){
+        $city = \App\Models\City::find($id);
+        if(self::isNotNullOrEmpty($city)){
+            return $city['city_municipality_description'];
+        }else{
+            return 'N/A';
+        }
+    }
+
     public static function getProvinces(){
         $provinces = \App\Models\Province::all();
         return $provinces;
+    }
+    public static function getProvincesById($id){
+        $province = \App\Models\Province::find($id);
+        if(self::isNotNullOrEmpty($province)){
+            return $province['province_description'];
+        }else{
+            return 'N/A';
+        }
+
     }
 
     public static function getInfoFromArray($array,$key){
@@ -24,6 +42,7 @@ class CommonHelper
         }
         return null;
     }
+
     /**
      * Check if variable is empty or null
      * @param null $field

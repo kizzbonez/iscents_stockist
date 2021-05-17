@@ -60,6 +60,8 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::get('/modals', function(){   return view('dashboard.notifications.modals'); });
         });
         Route::resource('notes', 'NotesController');
+        Route::match(array('GET','POST'),'/profile', 'UsersController@getuserInfoAction')->name('user.profile');
+        Route::match(array('GET','POST'),'/change-password', 'UsersController@changePasswordAction')->name('user.changepassword');
     });
     Auth::routes();
 
@@ -124,5 +126,6 @@ Route::group(['middleware' => ['get.menu']], function () {
         Route::match(array('GET','POST'),'/user-management/edit-user-password/{id}', 'admin\UsersController@updateUserPasswordAction')->name('admin.user.update.password');
         Route::match(array('GET'),'/user-management', 'admin\UsersController@index')->name('admin.user.list');
         Route::match(array('GET'),'/user-list', 'admin\UsersController@getusersAction')->name('admin.api.users');
+        Route::match(array('GET','POST'),'/profile', 'UsersController@getuserInfoAction')->name('user.profile');
     });
 });

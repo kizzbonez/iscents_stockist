@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class UserService
@@ -75,7 +76,7 @@ class UserService
         DB::beginTransaction();
         try {
             $user  = $this->getUserById($userId);
-            $user->password = $data['password'];
+            $user->password = Hash::make($data['password']);
             $user->save();
             DB::commit();
         } catch (Exception $e) {

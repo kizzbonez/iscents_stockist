@@ -13,13 +13,10 @@
               <div class="c-avatar"><img class="c-avatar-img" src="{{ url('/assets/img/avatars/6.jpg') }}" alt="user@email.com"></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right pt-0">
-              <div class="dropdown-header bg-light py-2"><strong>Account</strong></div><a class="dropdown-item" href="#">
-                <svg class="c-icon mr-2">
-                  <use xlink:href="{{ url('/icons/sprites/free.svg#cil-user') }}"></use>
-                </svg> Profile</a><a class="dropdown-item" href="#">
-                <svg class="c-icon mr-2">
-                  <use xlink:href="{{ url('/icons/sprites/free.svg#cil-account-logout') }}"></use>
-                </svg><form action="{{ url('/logout') }}" method="POST"> @csrf <button type="submit" class="btn btn-ghost-dark btn-block">Logout</button></form></a>
+              <div class="dropdown-header bg-light py-2"><strong>Account</strong></div><a class="dropdown-item" href="/profile">
+                    <i class="fas fa-user" style="margin-right: 15px"></i>  Profile</a><a class="dropdown-item" href="/change-password">
+                    <i class="fas fa-lock" style="margin-right: 15px"></i> Change Password</a><a class="dropdown-item" href="#">
+                    <i class="fas fa-sign-out-alt"></i> <form action="{{ url('/logout') }}" method="POST"> @csrf <button type="submit" class="btn btn-ghost-dark btn-block">Logout</button></form></a>
             </div>
           </li>
         </ul>
