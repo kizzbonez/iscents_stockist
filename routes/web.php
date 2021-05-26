@@ -59,6 +59,12 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::get('/badge', function(){    return view('dashboard.notifications.badge'); });
             Route::get('/modals', function(){   return view('dashboard.notifications.modals'); });
         });
+        Route::prefix('products')->group(function () {
+            Route::get('/', 'ProductController@index')->name('products');
+            Route::match(array('GET','POST'),'/add-product', 'ProductController@addProductAction')->name('product.add');
+            Route::match(array('GET','PUT'),'/update-product/{uuid}', 'ProductController@updateProductAction')->name('product.update');
+            Route::match(array('GET','PUT'),'/archive-product/{uuid}', 'ProductController@archiveProductAction')->name('product.archive');
+        });
         Route::resource('notes', 'NotesController');
         Route::match(array('GET','POST'),'/profile', 'UsersController@getuserInfoAction')->name('user.profile');
         Route::match(array('GET','POST'),'/change-password', 'UsersController@changePasswordAction')->name('user.changepassword');

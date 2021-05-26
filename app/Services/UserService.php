@@ -23,7 +23,6 @@ class UserService
     public function registerUser($data){
         DB::beginTransaction();
         try {
-
             $user = User::create([
                 'name' => $data['name'],
                 'username' => $data['username'],
@@ -38,6 +37,7 @@ class UserService
                 'remember_token' => Str::random(10),
                 'menuroles' => 'user'
             ]);
+
             $user->assignRole('user');
                 DB::commit();
                 return $user;

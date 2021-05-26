@@ -25,11 +25,11 @@
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <?php $segments = ''; ?>
             @for($i = 1; $i <= count(Request::segments()); $i++)
-                <?php $segments .= '/'. Request::segment($i); ?>
+                <?php $segments .= '/'. \App\Helpers\CommonHelper::removeDash(Request::segment($i)); ?>
                 @if($i < count(Request::segments()))
-                    <li class="breadcrumb-item">{{ Request::segment($i) }}</li>
+                    <li class="breadcrumb-item">{{ \App\Helpers\CommonHelper::removeDash(Request::segment($i)) }}</li>
                 @else
-                    <li class="breadcrumb-item active">{{ Request::segment($i) }}</li>
+                    <li class="breadcrumb-item active">{{ \App\Helpers\CommonHelper::removeDash(Request::segment($i)) }}</li>
                 @endif
             @endfor
           </ol>

@@ -76,7 +76,15 @@ class CommonHelper
 
         return $userInfoArr;
 
-
+    }
+    /**
+     * Remove dash from the string
+     * @param  string $string
+     * @return string
+     */
+    public static function removeDash($string)
+    {
+        return ucwords(str_replace('-',' ',$string));
     }
 
 
