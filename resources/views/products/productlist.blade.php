@@ -61,7 +61,13 @@
     <script>
         $(document).ready(function() {
             $(document).ready(function () {
-                $('#product-table').DataTable();
+                $('#product-table').DataTable({
+                    pageLength: 10,
+                    "processing": true,
+                    "ordering": true, "bLengthChange" : true, "pageLength": 10, "searching": true,
+                    deferRender:    true,
+                    "ajax": 'products/list'
+                });
 
             })
         })

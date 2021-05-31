@@ -127,6 +127,21 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::post('/file/cropp',      'MediaController@cropp');
             Route::get('/file/copy',        'MediaController@fileCopy')->name('media.file.copy');
         });
+        Route::prefix('products')->group(function () {
+            Route::get('/', 'ProductController@index')->name('products');
+            Route::match(array('GET','POST'),'/add-product', 'ProductController@addProductAction')->name('product.add');
+            Route::match(array('GET','POST'),'/update-product/{uuid}', 'ProductController@updateProductAction')->name('product.update');
+            Route::match(array('GET','POST'),'/archive-product', 'ProductController@archiveProductAction')->name('product.archive');
+            Route::match(array('GET'),'/list', 'ProductController@getProductTableListAction')->name('product.list');
+        });
+        Route::prefix('inventory')->group(function () {
+            Route::get('/', 'InventoryController@index')->name('products');
+            Route::match(array('GET','POST'),'/add-product', 'InventoryController@addInventoryProductAction')->name('inventory.add');
+            Route::match(array('GET','POST'),'/update-product/{uuid}', 'ProductController@updateProductAction')->name('product.update');
+            Route::match(array('GET','POST'),'/archive-product', 'ProductController@archiveProductAction')->name('product.archive');
+            Route::match(array('GET'),'/list', 'ProductController@getProductTableListAction')->name('product.list');
+        });
+
         Route::match(array('GET','POST'),'/user-management/add-user', 'admin\UsersController@userInfoAction')->name('admin.user.add');
         Route::match(array('GET','POST'),'/user-management/edit-user/{id}', 'admin\UsersController@updateUserInfoAction')->name('admin.user.update');
         Route::match(array('GET','POST'),'/user-management/edit-user-password/{id}', 'admin\UsersController@updateUserPasswordAction')->name('admin.user.update.password');

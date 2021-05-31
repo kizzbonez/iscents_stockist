@@ -36,8 +36,7 @@ class CommonHelper
     }
 
     public static function getInfoFromArray($array,$key){
-
-        if(array_key_exists($key,$array)){
+        if(isset($array[$key])){
             return $array[$key];
         }
         return null;
@@ -84,7 +83,13 @@ class CommonHelper
      */
     public static function removeDash($string)
     {
-        return ucwords(str_replace('-',' ',$string));
+        if((preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $string) !== 1))
+        {
+            return ucwords(str_replace('-',' ',$string));
+        }else{
+            return null;
+        }
+
     }
 
 

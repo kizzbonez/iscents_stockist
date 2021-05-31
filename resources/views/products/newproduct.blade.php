@@ -6,15 +6,12 @@
 @endsection
 
 @section('content')
-
-
     <div class="container">
         <div class="fade-in">
             <div class="row">
-
                 <div class="offset-xl-3 col-xl-6   col-sm-12">
                     <div class="card">
-                        <div class="card-header"><h4>{{last(Request::segments())}}</h4></div>
+                        <div class="card-header"><h4>{{\App\Helpers\CommonHelper::removeDash(last(Request::segments()))}}</h4></div>
                         <div class="card-body">
                             @if(session()->has('error'))
                                 <div class="row">
@@ -38,112 +35,60 @@
                             @endif
                             <form method="POST" >
                                 @csrf
-                                <input type="hidden" id="id" name="id" value="{{\App\Helpers\CommonHelper::getInfoFromArray($userInfo,'id')}}">
+                                <input type="hidden" id="uuid" name="uuid" value="{{\App\Helpers\CommonHelper::getInfoFromArray($productInfo,'uuid')}}">
                                 <div class="form-group">
-                                    <label>Username</label>
+                                    <label>Product Name</label>
                                     <input
                                         type="text"
-                                        placeholder="Username"
-                                        name="username"
-                                        id="username"
-                                        class="form-control"
-                                        value="{{\App\Helpers\CommonHelper::getInfoFromArray($userInfo,'username')}}"
-                                    />
-                                </div>
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Fullname"
+                                        placeholder="Product Name"
                                         name="name"
                                         id="name"
                                         class="form-control"
-                                        value="{{\App\Helpers\CommonHelper::getInfoFromArray($userInfo,'name')}}"
+                                        value="{{\App\Helpers\CommonHelper::getInfoFromArray($productInfo,'name')}}"
                                     />
                                 </div>
                                 <div class="form-group">
-                                    <label>Email Address</label>
-                                    <input
-                                        type="email"
-                                        placeholder="Email"
-                                        name="email"
-                                        id="email"
-                                        class="form-control"
-                                        value="{{\App\Helpers\CommonHelper::getInfoFromArray($userInfo,'email')}}"
-                                    />
-                                </div>
-                                <div class="form-group">
-                                    <label>Contact Number</label>
+                                    <label>SKU</label>
                                     <input
                                         type="text"
-                                        placeholder="Contact Number"
-                                        name="contact_number"
-                                        id="contact_number"
+                                        placeholder="SKU"
+                                        name="sku"
+                                        id="sku"
                                         class="form-control"
-                                        value="{{\App\Helpers\CommonHelper::getInfoFromArray($userInfo,'contact_number')}}"
+                                        value="{{\App\Helpers\CommonHelper::getInfoFromArray($productInfo,'sku')}}"
                                     />
                                 </div>
                                 <div class="form-group">
-                                    <label>Address</label>
+                                    <label>Description</label>
+                                    <textarea class="form-control" id="description" name="description" size="5">
+                                        {{\App\Helpers\CommonHelper::getInfoFromArray($productInfo,'description')}}
+                                    </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Points</label>
                                     <input
                                         type="text"
-                                        placeholder="Address"
-                                        name="address"
-                                        id="address"
+                                        placeholder="Product Points"
+                                        name="points"
+                                        id="points"
                                         class="form-control"
-                                        value="{{\App\Helpers\CommonHelper::getInfoFromArray($userInfo,'address')}}"
+                                        value="{{\App\Helpers\CommonHelper::getInfoFromArray($productInfo,'points')}}"
                                     />
                                 </div>
                                 <div class="form-group">
-                                    <label>Province</label>
-                                    <select name="province"
-                                            id="province"
-                                            class="form-control select2"
-                                    >
-                                        @php
-                                            $provinces = \App\Helpers\CommonHelper::getProvinces()
-                                        @endphp
-
-                                        @foreach($provinces as $province)
-                                            <option value="{{$province->id}}" {{(\App\Helpers\CommonHelper::getInfoFromArray($userInfo,'province') != $province->id ?:'selected' )}}>{{$province->province_description}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>City</label>
-                                    <select name="city"
-                                            id="city"
-                                            class="form-control select2"
-                                    >
-                                        @php
-                                            $cities = \App\Helpers\CommonHelper::getCities()
-                                        @endphp
-                                        @foreach($cities as $city)
-                                            <option value="{{$city->id}}" {{(\App\Helpers\CommonHelper::getInfoFromArray($userInfo,'city') != $city->id ?:'selected' )}}>{{$city->city_municipality_description}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Type</label>
-                                    <select name="stockist_type"
-                                            id="stockist_type"
-                                            class="form-control"
-                                    >
-                                        @php
-                                            $userTypes = \App\Constants\StockistConstants::USER_TYPES;
-                                        @endphp
-
-                                        @foreach($userTypes as $index => $userType)
-
-                                            @if($index !== \App\Constants\StockistConstants::USER_TYPE_ADMIN_STOCKIST)
-                                                <option value="{{$index}}" {{(\App\Helpers\CommonHelper::getInfoFromArray($userInfo,'stockist_type') != $index ?:'selected' )}}>{{$userType}}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
+                                    <label>Price</label>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        placeholder="Price"
+                                        name="price"
+                                        id="price"
+                                        class="form-control"
+                                        value="{{\App\Helpers\CommonHelper::getInfoFromArray($productInfo,'price')}}"
+                                    />
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -154,12 +99,3 @@
 
 @endsection
 
-@section('javascript')
-    <script>
-        $(document).ready(function(){
-            $('.select2').select2();
-
-        })
-    </script>
-
-@endsection
