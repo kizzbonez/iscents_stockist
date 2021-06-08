@@ -8,13 +8,12 @@
 @section('content')
 
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="fade-in">
             <div class="row">
-
-                <div class="col-xl-12   col-sm-12">
+                <div class="offset-xl-12 col-xl-12   col-sm-12">
                     <div class="card">
-                        <div class="card-header"><h4>{{$pageData['title']}}</h4></div>
+                        <div class="card-header"><h4>{{\App\Helpers\CommonHelper::removeDash(last(Request::segments()),Request::segments())}}</h4></div>
                         <div class="card-body">
                             @if(session()->has('error'))
                                 <div class="row">
@@ -36,17 +35,17 @@
                                     </div>
                                 </div>
                             @endif
-                            <table class="table table-bordered datatable" id="datatable-users">
+
+                            <table id="stock-table" class="table table-bordered">
                                 <thead>
-                                    <th>Username</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Roles</th>
-                                    <th>Type</th>
-                                    <th>Created At</th>
-                                    <th>Action</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Type</th>
+                                <th>Quantity</th>
+                                <th>Date</th>
                                 </thead>
                             </table>
+
                         </div>
                     </div>
                 </div>
@@ -58,15 +57,20 @@
 @endsection
 
 @section('javascript')
-<script>
-    $(document).ready( function () {
-        $('#datatable-users').DataTable({
-            pageLength: 10,
-            "processing": true,
-            "ordering": true, "bLengthChange" : true, "pageLength": 10, "searching": true,
-            deferRender:    true,
-            "ajax": 'user-management/user-list'
+    <script>
+        $(document).ready(function() {
+            $(document).ready(function () {
+                const product_id = {{$product_id}};
+                $('#stock-table').DataTable({
+                    pageLength: 10,
+                    "processing": true,
+                    "ordering": true, "bLengthChange" : true, "pageLength": 10, "searching": true,
+                    deferRender:    true,
+                    "ajax": '/stocks/history/list/'+product_id ,
+                });
+
+            })
         })
-    } );
-</script>
+    </script>
+
 @endsection

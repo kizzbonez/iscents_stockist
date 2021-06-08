@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Stocks;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
@@ -74,6 +75,8 @@ class UsersAndNotesSeeder extends Seeder
         ]);
         $user->assignRole('admin');
         $user->assignRole('user');
+
+
 //        for($i = 0; $i<$numberOfUsers; $i++){
 //            $user = User::create([
 //                'name' => $faker->name(),

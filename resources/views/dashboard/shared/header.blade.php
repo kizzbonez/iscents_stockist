@@ -29,7 +29,7 @@
                 @if($i < count(Request::segments()))
                     <li class="breadcrumb-item">{{ \App\Helpers\CommonHelper::removeDash(Request::segment($i)) }}</li>
                 @else
-                    <li class="breadcrumb-item active">{{ \App\Helpers\CommonHelper::removeDash(Request::segment($i)) }}</li>
+                    <li class="breadcrumb-item active">{{ \App\Helpers\CommonHelper::removeDash(Request::segment($i),Request::segments()) }}</li>
                 @endif
             @endfor
           </ol>

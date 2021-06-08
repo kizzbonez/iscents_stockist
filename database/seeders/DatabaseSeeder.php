@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             FolderTableSeeder::class,
             ExampleSeeder::class,
             BREADSeeder::class,
+            ProductSeeder::class,
             EmailSeeder::class,
             PhilippineProvincesTableSeeder::class,
             PhilippineCitiesTableSeeder::class,

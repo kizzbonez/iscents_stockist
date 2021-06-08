@@ -134,19 +134,21 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::match(array('GET','POST'),'/archive-product', 'ProductController@archiveProductAction')->name('product.archive');
             Route::match(array('GET'),'/list', 'ProductController@getProductTableListAction')->name('product.list');
         });
-        Route::prefix('inventory')->group(function () {
-            Route::get('/', 'InventoryController@index')->name('products');
-            Route::match(array('GET','POST'),'/add-product', 'InventoryController@addInventoryProductAction')->name('inventory.add');
-            Route::match(array('GET','POST'),'/update-product/{uuid}', 'ProductController@updateProductAction')->name('product.update');
-            Route::match(array('GET','POST'),'/archive-product', 'ProductController@archiveProductAction')->name('product.archive');
-            Route::match(array('GET'),'/list', 'ProductController@getProductTableListAction')->name('product.list');
+        Route::prefix('stocks')->group(function () {
+            Route::get('/', 'StocksController@index')->name('stocks');
+            Route::match(array('GET','POST'),'/add-stocks', 'StocksController@addStocksAction')->name('stocks.add');
+            Route::match(array('GET','POST'),'/list', 'StocksController@getStockTableListAction')->name('stocks.list');
+            Route::match(array('GET','POST'),'/history/{product_id}', 'StocksController@getStockHistoryAction')->name('stocks.history');
+            Route::match(array('GET','POST'),'/history/list/{product_id}', 'StocksController@getStockTransactionsTableListAction')->name('stocks.history.list');
         });
 
-        Route::match(array('GET','POST'),'/user-management/add-user', 'admin\UsersController@userInfoAction')->name('admin.user.add');
-        Route::match(array('GET','POST'),'/user-management/edit-user/{id}', 'admin\UsersController@updateUserInfoAction')->name('admin.user.update');
-        Route::match(array('GET','POST'),'/user-management/edit-user-password/{id}', 'admin\UsersController@updateUserPasswordAction')->name('admin.user.update.password');
-        Route::match(array('GET'),'/user-management', 'admin\UsersController@index')->name('admin.user.list');
-        Route::match(array('GET'),'/user-list', 'admin\UsersController@getusersAction')->name('admin.api.users');
+        Route::prefix('user-management')->group(function () {
+            Route::match(array('GET'),'/', 'admin\UsersController@index')->name('admin.user.list');
+            Route::match(array('GET','POST'),'/add-user', 'admin\UsersController@userInfoAction')->name('admin.user.add');
+            Route::match(array('GET','POST'),'/edit-user/{id}', 'admin\UsersController@updateUserInfoAction')->name('admin.user.update');
+            Route::match(array('GET','POST'),'/edit-user-password/{id}', 'admin\UsersController@updateUserPasswordAction')->name('admin.user.update.password');
+            Route::match(array('GET'),'/user-list', 'admin\UsersController@getusersAction')->name('admin.api.users');
+        });
         Route::match(array('GET','POST'),'/profile', 'UsersController@getuserInfoAction')->name('user.profile');
     });
 });

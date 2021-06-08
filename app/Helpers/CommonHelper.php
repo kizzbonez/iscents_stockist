@@ -1,6 +1,7 @@
 <?php
 namespace App\Helpers;
 
+use App\Models\Product;
 use App\Models\User;
 
 class CommonHelper
@@ -81,15 +82,26 @@ class CommonHelper
      * @param  string $string
      * @return string
      */
-    public static function removeDash($string)
+    public static function  removeDash($string,Array $segment = [])
     {
-        if((preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $string) !== 1))
+        if(is_numeric($string))
         {
-            return ucwords(str_replace('-',' ',$string));
+            if(in_array('stocks',$segment) || in_array('products',$segment)){
+                 $product = Product::find($string);
+                 if(CommonHelper::isNotNullOrEmpty($product)){
+                     $string = $product['name'];
+                 }
+            }
         }else{
-            return null;
+            if((preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/', $string) !== 1))
+            {
+               $string =  ucwords(str_replace('-',' ',$string));
+            }else{
+                $string = null;
+            }
         }
 
+        return $string ;
     }
 
 

@@ -32,4 +32,8 @@ class StockistConstants
     //End User Type
 
     const GMT_DATE_FORMAT = 'M d Y g:i A';
+
+    const TRANS_TYPE_IN = 0;
+    const TRANS_TYPE_OUT = 1;
+    const TRANS_TYPE = array( self::TRANS_TYPE_IN=>'IN',self::TRANS_TYPE_OUT=>'OUT');
 }
