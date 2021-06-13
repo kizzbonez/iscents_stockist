@@ -38,6 +38,9 @@
 
                             <table id="stock-table" class="table table-bordered">
                                 <thead>
+                                <th>SKU</th>
+                                <th>Product Name</th>
+                                <th>Order ID</th>
                                 <th>From</th>
                                 <th>To</th>
                                 <th>Type</th>
@@ -60,7 +63,7 @@
     <script>
         $(document).ready(function() {
             $(document).ready(function () {
-                const product_id = {{$product_id}};
+                const product_id = "{{$product_id}}";
                 $('#stock-table').DataTable({
                     pageLength: 10,
                     "processing": true,

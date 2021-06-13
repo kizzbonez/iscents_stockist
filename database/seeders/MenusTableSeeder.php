@@ -136,8 +136,13 @@ class MenusTableSeeder extends Seeder
         $this->menuId = DB::getPdo()->lastInsertId();  //set menuId
         $this->insertLink('guest,user,admin', 'Dashboard', '/dashboard', 'cil-speedometer');
         $this->beginDropdown('user,admin', 'Product Management', 'cil-box');
-        $this->insertLink('user,admin', 'New Product',                   '/new-product');
-        $this->insertLink('admin', 'Inventory',                   '/inventory');
+        $this->insertLink('admin', 'Products',                   '/products');
+        $this->insertLink('user,admin', 'New Product',                   '/products/add-product');
+        $this->endDropdown();
+        $this->beginDropdown('user,admin', 'Stocks Management', 'cil-box');
+        $this->insertLink('admin', 'Add Stocks',                   '/stocks/add-stock');
+        $this->insertLink('user,admin', 'Stocks',                   '/stocks');
+        $this->insertLink('user,admin', 'History',                   '/stocks/history');
         $this->endDropdown();
         $this->beginDropdown('user,admin', 'Order Management', 'cil-box');
         $this->insertLink('user', 'New Order',                   '/new-orders');
@@ -145,10 +150,15 @@ class MenusTableSeeder extends Seeder
         $this->endDropdown();
         $this->beginDropdown('admin', 'User Management', 'cil-user');
         $this->insertLink('admin', 'Add User',                   '/user-management/add-user');
-        $this->insertLink('admin', 'User List',                   '/user-list');
+        $this->insertLink('admin', 'User List',                   '/user-management');
+        $this->endDropdown();
+        $this->beginDropdown('admin', 'Order Management', 'cil-user');
+        $this->insertLink('admin', 'New Order',                   '/user-management/add-user');
+        $this->insertLink('admin', 'Order List',                   '/user-management');
+        $this->insertLink('admin', 'Order History',                   '/user-management');
         $this->endDropdown();
         $this->beginDropdown('admin', 'Settings', 'cil-calculator');
-        $this->insertLink('admin', 'Edit menu',               '/menu/menu');
+        $this->insertLink('admin', 'Edit menu',               '/menu/menu ');
         $this->insertLink('admin', 'Edit menu elements',      '/menu/element');
 
 //        $this->insertLink('admin', 'Edit roles',              '/roles');

@@ -99,7 +99,7 @@ class StocksController extends Controller
             $array['data']= array();
             foreach( $products as $key=>$value)
             {
-                $ActionElements ='<a target="_blank" class="btn btn-default" href="" title="Stock History"><i class="fas fa-list"></i></a>
+                $ActionElements ='<a target="_blank" class="btn btn-default" href="'.route('stocks.history',['product_id'=> $value->product->id]).'" title="Stock History"><i class="fas fa-list"></i></a>
                               ' ;
                 $array['data'][] = array(
                     $value->product->sku,
@@ -119,9 +119,14 @@ class StocksController extends Controller
 
 
 
-    public function getStockHistoryAction($product_id){
+    public function getStockHistoryAction($product_id=null){
         try {
-            $productHistory = Product::find($product_id);
+            if(CommonHelper::isNotNullOrEmpty($product_id)){
+                $productHistory = Product::find($product_id);
+            }else{
+                $productHistory = Product::all();
+                $product_id = 0 ;
+            }
             if(CommonHelper::isNotNullOrEmpty($productHistory)){
 
                 return view('stocks.stockhistory',compact("product_id"));
@@ -132,33 +137,45 @@ class StocksController extends Controller
         }
     }
 
-    public function getStockTransactionsTableListAction($product_id){
+    public function getStockTransactionsTableListAction($product_id = null){
         try {
-            if(CommonHelper::isNotNullOrEmpty($product_id)){
+            $relationWith = array('from','to','product');
+            if(CommonHelper::isNotNullOrEmpty($product_id) && $product_id != 0){
                 $productHistory = Stocks::where('product_id',$product_id)
                     ->where(function($queryContainer){
                         $queryContainer-> where('to_id',Auth::user()->id)->orWhere('from_id',Auth::user()->id);
-                    })->with('from','to')
+                    })->with($relationWith )
                     ->get();
-
-                $array=array();
-                $array['draw']=1;
-                $array['recordsTotal']=  $productHistory->count();
-                $array['recordsFiltered']=  $productHistory->count();
-                $array['data']= array();
-                foreach( $productHistory as $key=>$value)
-                {
-
-                    $array['data'][] = array(
-                        $value->from['name'] ,
-                        $value->to['name'] ,
-                        StockistConstants::TRANS_TYPE[$value->trans_type],
-                        $value->qty,
-                        Carbon::parse($value->created_at)->format(StockistConstants::GMT_DATE_FORMAT));
-                }
-                return $array;
+            }else{
+                $productHistory = Stocks::where(function($queryContainer){
+                        if(Auth::user()->hasRole('admin')){
+                          return true;
+                        }else{
+                            $queryContainer-> where('to_id',Auth::user()->id)->orWhere('from_id',Auth::user()->id);
+                        }
+                    })->with($relationWith )
+                    ->get();
             }
-            return view('stocks.stockhistory',compact("{$product_id}"));
+
+            $array=array();
+            $array['draw']=1;
+            $array['recordsTotal']=  $productHistory->count();
+            $array['recordsFiltered']=  $productHistory->count();
+            $array['data']= array();
+            foreach( $productHistory as $key=>$value)
+            {
+
+                $array['data'][] = array(
+                    $value->product['sku'] ,
+                    $value->product['name'] ,
+                    $value->order_id ,
+                    $value->from['name'] ,
+                    $value->to['name'] ,
+                    StockistConstants::TRANS_TYPE[$value->trans_type],
+                    $value->qty,
+                    Carbon::parse($value->created_at)->format(StockistConstants::GMT_DATE_FORMAT));
+            }
+            return $array;
         }catch (\Exception $e){
             Log::error($e->getMessage());
         }

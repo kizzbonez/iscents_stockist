@@ -136,10 +136,10 @@ Route::group(['middleware' => ['get.menu']], function () {
         });
         Route::prefix('stocks')->group(function () {
             Route::get('/', 'StocksController@index')->name('stocks');
-            Route::match(array('GET','POST'),'/add-stocks', 'StocksController@addStocksAction')->name('stocks.add');
+            Route::match(array('GET','POST'),'/add-stock', 'StocksController@addStocksAction')->name('stocks.add');
             Route::match(array('GET','POST'),'/list', 'StocksController@getStockTableListAction')->name('stocks.list');
-            Route::match(array('GET','POST'),'/history/{product_id}', 'StocksController@getStockHistoryAction')->name('stocks.history');
-            Route::match(array('GET','POST'),'/history/list/{product_id}', 'StocksController@getStockTransactionsTableListAction')->name('stocks.history.list');
+            Route::match(array('GET','POST'),'/history/{product_id?}', 'StocksController@getStockHistoryAction')->name('stocks.history');
+            Route::match(array('GET','POST'),'/history/list/{product_id?}', 'StocksController@getStockTransactionsTableListAction')->name('stocks.history.list');
         });
 
         Route::prefix('user-management')->group(function () {
